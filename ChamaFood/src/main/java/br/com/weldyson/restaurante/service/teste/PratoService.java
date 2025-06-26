@@ -1,10 +1,10 @@
 package br.com.weldyson.restaurante.service.teste;
 
+import br.com.weldyson.restaurante.dao.PratoDao;
 import br.com.weldyson.restaurante.entity.Prato;
+import br.com.weldyson.restaurante.util.JPAUtil;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.math.BigDecimal;
 
 public class PratoService {
@@ -16,9 +16,10 @@ public class PratoService {
         risoto.setValor(BigDecimal.valueOf(88.50));
 
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ChamaFood");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityManager entityManager = JPAUtil.getEntityManagerChamaFood();
+        PratoDao pratoDao = new PratoDao(entityManager);
         entityManager.getTransaction().begin();
+        pratoDao.cadastrar(risoto);
         entityManager.persist(risoto);
         entityManager.getTransaction().commit();
         entityManager.close();

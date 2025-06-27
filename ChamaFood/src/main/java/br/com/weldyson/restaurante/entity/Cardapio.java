@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "pratos")
+@Table(name = "cardapio")
 
-public class Prato {
+public class Cardapio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,12 +22,15 @@ public class Prato {
 
     private BigDecimal valor;
 
+    @ManyToOne
+    private Categorias categorias;
+
 
     @Column(name = "data_de_registro")
     private LocalDateTime dataDeRegistro = LocalDateTime.now();
 
 
-    public Prato() {
+    public Cardapio() {
     }
 
     public Integer getId() {
@@ -80,7 +83,7 @@ public class Prato {
 
     @Override
     public String toString() {
-        return "Prato{" +
+        return "Cardapio{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +

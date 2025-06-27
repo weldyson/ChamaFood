@@ -24,6 +24,7 @@ public class PratoService {
         entityManager.getTransaction().commit();
         entityManager.close();
 
+
     }
 
 }

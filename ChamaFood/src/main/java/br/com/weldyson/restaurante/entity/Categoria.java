@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "categorias")
 
-public class Categorias {
+public class Categoria {
 
 
     @Id
@@ -15,7 +15,11 @@ public class Categorias {
 
     private String nome;
 
-    public Categorias(){
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
+
+    public Categoria(){
 
     }
     public Integer getId() { return id; }
@@ -28,7 +32,7 @@ public class Categorias {
 
     @Override
     public String toString() {
-        return "Categorias{" +
+        return "Categoria{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 '}';

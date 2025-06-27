@@ -23,12 +23,21 @@ public class Cardapio {
     private BigDecimal valor;
 
     @ManyToOne
-    private Categorias categorias;
+    private Categoria categoria;
 
 
     @Column(name = "data_de_registro")
     private LocalDateTime dataDeRegistro = LocalDateTime.now();
 
+
+    public Cardapio(String nome, String descricao, Boolean disponivel, BigDecimal valor, Categoria categoria, LocalDateTime dataDeRegistro) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.disponivel = disponivel;
+        this.valor = valor;
+        this.categoria = categoria;
+        this.dataDeRegistro = dataDeRegistro;
+    }
 
     public Cardapio() {
     }
@@ -91,5 +100,8 @@ public class Cardapio {
                 ", valor=" + valor +
                 ", dataDeRegistro=" + dataDeRegistro +
                 '}';
+    }
+
+    public void setCategoria(Categoria categoria) {
     }
 }
